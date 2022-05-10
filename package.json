@@ -29,6 +29,7 @@
     "hardhat": "^2.4.0",
     "hardhat-contract-sizer": "^2.0.3",
     "keccak": "^3.0.1",
+    "react": "^18.1.0",
     "rlp": "^2.2.6",
     "ts-node": "^10.0.0",
     "typechain": "^6.1.0",
@@ -47,10 +48,10 @@
     "@types/dotenv": "^8.2.0",
     "@types/mocha": "^9.0.0",
     "@types/node": "^15.12.4",
-    "erc721a": "^3.2.0",
-    "eslint": "^8.13.0",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.0.0",
+    "erc721a": "^3.2.0",
+    "eslint": "^8.13.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "husky": "^7.0.2",
@@ -61,8 +62,8 @@
   },
   "lint-staged": {
     "*.ts": [
-        "eslint",
-        "prettier --write"
+      "eslint",
+      "prettier --write"
     ]
   }
 }
