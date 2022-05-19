@@ -15,6 +15,6 @@
       "mocha"
     ]
   },
-  "include": ["./scripts", "./build", "./tests"],
+  "include": ["src/scripts", "./build", "src/tests"],
   "files": ["./hardhat.config.ts"]
 }

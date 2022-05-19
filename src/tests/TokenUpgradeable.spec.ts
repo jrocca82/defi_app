@@ -2,7 +2,7 @@
 import { ethers as tsEthers } from "ethers";
 import { expect } from "chai";
 import { getEventData } from "./utils";
-import { deployProxy } from "../scripts/deploy/utils";
+import { deployProxy } from "../src/scripts/deploy/utils";
 import { TokenUpgradeable } from "../build/typechain";
 
 let token: TokenUpgradeable;

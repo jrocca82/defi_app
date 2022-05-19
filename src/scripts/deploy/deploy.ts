@@ -1,7 +1,7 @@
 import hardhat from "hardhat";
 import { updateContractConfig } from "../utils";
 // @ts-ignore
-import savedConfig from "../../contracts.json";
+import savedConfig from "../../../contracts.json";
 import { getSignerForDeployer, getSignerIndex } from "./utils";
 import DeploymentModules from "./contracts";
 // @ts-ignore
