@@ -4,9 +4,8 @@ import { TokenFarm } from "../../../../build/typechain";
 export const contractNames = () => ["token"];
 
 export const constructorArguments = () => [
-  process.env.CONSTRUCTOR_TOKEN_NAME,
-  process.env.CONSTRUCTOR_TOKEN_SYMBOL,
-  process.env.CONSTRUCTOR_TOKEN_DECIMALS
+  process.env.CONSTRUCTOR_DAI_TOKEN,
+  process.env.CONSTRUCTOR_DAPP_TOKEN
 ];
 
 export const deploy = async (deployer, setAddresses) => {
