@@ -14,6 +14,6 @@ export interface DeploymentModule {
   upgrade?: (deployer: tsEthers.Signer, addresses?: any) => void;
 }
 
-const modules: DeploymentModule[] = [TokenFarm, DaiToken, DappToken];
+const modules: DeploymentModule[] = [DaiToken, DappToken, TokenFarm];
 
 export default modules;

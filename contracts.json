@@ -1,4 +1,8 @@
 {
-  "kovan": { },
-  "localhost": { } 
+  "kovan": {},
+  "localhost": {
+    "daiToken": "0xB9816fC57977D5A786E654c7CF76767be63b966e",
+    "dappToken": "0x6D411e0A54382eD43F02410Ce1c7a7c122afA6E1",
+    "tokenFarm": "0x5CF7F96627F3C9903763d128A1cc5D97556A6b99"
+  }
 }

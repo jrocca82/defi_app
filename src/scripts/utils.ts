@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import rlp from "rlp";
 import keccak from "keccak";
-const configPath = path.resolve(__dirname, "../contracts.json");
+const configPath = path.resolve(__dirname, "../../contracts.json");
 import { ethers } from "ethers";
 import { LedgerSigner } from "@ethersproject/hardware-wallets";
 
