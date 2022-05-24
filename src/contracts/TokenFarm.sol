@@ -10,8 +10,6 @@ contract TokenFarm {
     DappToken public dappToken;
     DaiToken public daiToken;
 
-y
-
     constructor (DappToken _dappToken, DaiToken _daiToken) {
         dappToken = _dappToken;
         daiToken = _daiToken;
