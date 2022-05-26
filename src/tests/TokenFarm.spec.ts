@@ -101,27 +101,27 @@ describe("Token Farm", () => {
     expect(dappBalance).to.equal(parseEther("10"));
   });
 
+  
+  it("Should unstake tokens", async () => {
+    await tokenFarm.connect(user).unstakeTokens();
+    
+    const balance = await daiToken.connect(user).balanceOf(user.address);
+    expect(balance).to.equal(parseEther("100"));
+    
+    const tokenFarmDaiBalance = await daiToken.balanceOf(tokenFarm.address);
+    const stakingBalance = await tokenFarm.stakingBalance(user.address);
+    
+    expect(tokenFarmDaiBalance).to.equal(parseEther("0"));
+    expect(stakingBalance).to.equal(parseEther("0"));
+    
+    const userStakingStatus = await tokenFarm.isStaking(user.address);
+    expect(userStakingStatus).to.equal(false);
+  });
+  
   it("Should only let owner issue tokens", async () => {
     tokenFarm.connect(userTwo);
     expect(tokenFarm.issueTokens()).to.be.revertedWith(
       "Caller must be owner"
     );
   });
-
-  it("Should unstake tokens", async () => {
-    await tokenFarm.connect(user).unstakeTokens();
-
-    const balance = await daiToken.balanceOf(user.address);
-    expect(balance).to.equal(parseEther("100"));
-
-    // const tokenFarmDaiBalance = await daiToken.balanceOf(tokenFarm.address);
-    // const stakingBalance = await tokenFarm.stakingBalance(user.address);
-
-    // expect(tokenFarmDaiBalance).to.equal(parseEther("0"));
-    // expect(stakingBalance).to.equal(parseEther("0"));
-
-    // const userStakingStatus = await tokenFarm.isStaking(user.address);
-    // expect(userStakingStatus).to.equal(false);
-  });
-
 });
