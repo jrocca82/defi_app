@@ -16,6 +16,7 @@ let daiToken: DaiToken;
 let dappToken: DappToken;
 let deployer: tsEthers.Signer;
 let user: tsEthers.Wallet;
+let userTwo: tsEthers.Wallet;
 
 describe("Token Farm", () => {
   before(async () => {
@@ -27,13 +28,17 @@ describe("Token Farm", () => {
       daiToken.address,
       dappToken.address
     );
-
     
     user = new ethers.Wallet(
       "0xbeefbeefbeefbeefbeefbeefbeefbeefbeefbeefbeefbeefbeefbeefbeefbeef",
       deployer.provider
-      );
+    );
       
+      userTwo = new ethers.Wallet(
+        "0xdeaddeaddeaddeaddeaddeaddeaddeaddeaddeaddeaddeaddeaddeaddeaddead",
+        deployer.provider
+      );
+
       // Send ETH to user from signer.
       await deployer.sendTransaction({
         to: user.address,
@@ -89,4 +94,34 @@ describe("Token Farm", () => {
     const userStakingStatus = await tokenFarm.isStaking(user.address);
     expect(userStakingStatus).to.equal(true);
   });
+
+  it("Should issue DApp tokens", async () => {
+    await tokenFarm.issueTokens();
+    const dappBalance = await dappToken.balanceOf(user.address);
+    expect(dappBalance).to.equal(parseEther("10"));
+  });
+
+  it("Should only let owner issue tokens", async () => {
+    tokenFarm.connect(userTwo);
+    expect(tokenFarm.issueTokens()).to.be.revertedWith(
+      "Caller must be owner"
+    );
+  });
+
+  it("Should unstake tokens", async () => {
+    await tokenFarm.connect(user).unstakeTokens();
+
+    const balance = await daiToken.balanceOf(user.address);
+    expect(balance).to.equal(parseEther("100"));
+
+    // const tokenFarmDaiBalance = await daiToken.balanceOf(tokenFarm.address);
+    // const stakingBalance = await tokenFarm.stakingBalance(user.address);
+
+    // expect(tokenFarmDaiBalance).to.equal(parseEther("0"));
+    // expect(stakingBalance).to.equal(parseEther("0"));
+
+    // const userStakingStatus = await tokenFarm.isStaking(user.address);
+    // expect(userStakingStatus).to.equal(false);
+  });
+
 });
